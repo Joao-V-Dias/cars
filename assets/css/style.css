@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --text-color: #000000;
+  --primary-color: #f20505;
+  --secondary-color: #cbcbcb;
+  --margin: 5vw;
+  --title--font: 4rem;
+  --title--secondary-font: 2.5rem;
+  --text-font: 1.2rem;
+  --text-info-font: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  background-color: var(--secondary-color);
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  width: 90vw;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1vw var(--margin);
+}
+
+.menu{
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.mobile-link{
+  display: none;
+}
+
+.menu-icon {
+  flex-direction: column;
+  gap: 0.3rem;
+  display: none;
+}
+
+.bar {
+  width: 2rem;
+  height: 0.3rem;
+  border-radius: 2px;
+  background-color: var(--text-color);
+  transition: 0.4s ease;
+}
+
+.line {
+  background-color: var(--primary-color);
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.link-menu {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: var(--text-font);
+}
+
+.link-menu:hover ~ .line {
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: var(--secondary-color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --title--font: 3rem;
+    --title--secondary-font: 1.3rem;
+    --text-font: 1.2rem;
+    --text-info-font: 1rem;
+  }
+
+  body.active{
+    overflow: hidden;
+  }
+
+  .mobile-link{
+    display: block;
+  }
+
+  .menu-icon{
+    z-index: 999;
+    display: flex;
+  }
+
+  .menu-icon.active :nth-child(1) {
+    transform: translateY(0.6rem) rotate(45deg);
+  }
+
+  .menu-icon.active :nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.active :nth-child(3) {
+    transform: translateY(-0.6rem) rotate(-45deg);
+  }
+
+  .desktop-link{
+    display: none;
+  }
+
+  .menu{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--secondary-color);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+
+  .menu.active{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
